@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gsvl.oneul.jmt.review.JmtReviewMapper">
-    <insert id="insReview">
+    <insert id="insReview" useGeneratedKeys="true" keyProperty="icmt">
         INSERT INTO o_jmt_review (ijmt, iuser, j_ctnt, j_star)
         VALUES ( #{ijmt}, #{iuser}, #{j_ctnt}, #{j_star})
     </insert>
 
-    <select id="selReviewList" resultType="JmtReviewVo">
+    <resultMap id="JmtReviewMap" type="JmtReviewVO">
+        <result property="icmt" column="icmt"></result>
+        <collection property="j_img" column="icmt" select="selReviewImg"></collection>
+    </resultMap>
+
+    <select id="selReviewList" resultMap="JmtReviewMap">
         SELECT A.*, B.u_nm AS username
         FROM o_jmt_review A
         LEFT JOIN o_user B
         ON A.iuser = B.iuser
         WHERE A.ijmt = ${ijmt}
         ORDER BY icmt
+    </select>
+
+    <select id="selReviewImg" resultType="String">
+        select j_img from o_review_img
+        where icmt=#{icmt}
     </select>
 
     <select id="selReview" resultType="JmtReviewVo">
@@ -31,4 +41,13 @@
         set j_ctnt = #{j_ctnt},j_star = #{j_star}
         where icmt = ${icmt} and iuser = ${iuser}
     </update>
+
+    <insert id="insReviewImg" >
+        insert into o_review_img
+        (icmt,j_img)
+        values
+        <foreach collection="j_img" item="item" separator=",">
+            (#{icmt},#{item})
+        </foreach>
+    </insert>
 </mapper>

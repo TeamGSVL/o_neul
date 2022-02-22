@@ -55,11 +55,25 @@
                         <button type="button" name="review_change" class="btn btn-primary">수정</button>
                     </th:block>
                 </div>
-                <div>
-                    *주의* 허위 리뷰는 신고 및 제제의 대상이 될수 있습니다. 리뷰는 당신을 비추는 거울입니다.
-                </div>
+
+
             </div>
         </section>
+        <div>
+            <div class="jmt-riview-imgup">
+                <div class="flex-c-r">
+                    <input multiple="multiple" type="file" id="review_img_file" accept="image/*">
+                    <div id="imgfile_nm"></div>
+                </div>
+                <div id="review_img_preveiw" class="flex-c-r">
+
+                </div>
+            </div>
+
+        </div>
     </section>
+    <div class="flex-c-r">
+        *주의* 허위 리뷰는 신고 및 제제의 대상이 될수 있습니다. 리뷰는 당신을 비추는 거울입니다.
+    </div>
 </th:block>
 </html>

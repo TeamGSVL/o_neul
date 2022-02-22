@@ -32,6 +32,7 @@ public class MyFileUtils {
             file.delete();
         }
     }
+    //파일삭제
     public void delFile(String path){
         File f = new File(path);
         if(f.exists()) {
@@ -64,4 +65,5 @@ public class MyFileUtils {
         }
         return randomFileNm;
     }
+
 }

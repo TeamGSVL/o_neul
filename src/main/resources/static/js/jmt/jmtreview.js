@@ -5,6 +5,35 @@
     let updStarElem = document.querySelector('#jmt_upd_star');
     let icmtElem = document.querySelector('#jmt_icmt');
 
+    //이미지 올리기
+    const imgFilesElem = document.querySelector('#review_img_file');
+    const previewImage = document.getElementById("review_img_preveiw");
+    const imgFileName = document.getElementById("imgfile_nm");
+
+    imgFilesElem.addEventListener('change',e=>{
+        preImgView(Array.from(imgFilesElem.files));
+    });
+
+    function preImgView(files) {
+        files.forEach(item=>{
+            if (item) {
+                // FileReader 인스턴스 생성
+                const reader = new FileReader()
+                // 이미지가 로드가 된 경우
+                reader.onload = e => {
+                    let imgElem = document.createElement('img');
+                    imgElem.src = e.target.result;
+
+                    previewImage.append(imgElem);
+
+                    imgFileName.innerHTML += `&nbsp;${item.name}`;
+                }
+                // reader가 이미지 읽도록 하기
+                reader.readAsDataURL(item);
+            }
+        });
+    }
+
     (function (){
         'use strict'
 
@@ -31,7 +60,26 @@
                     })
                         .then(res => res.json())
                         .then((data) => {
-                            location.href=`/jmt/${ijmt}`;
+                            if(imgFilesElem){
+                                const fData = new FormData();
+
+                                fData.append('ijmt',ijmt);
+                                fData.append('icmt',data);
+
+                                Array.from(imgFilesElem.files).forEach(uplFile=>{
+                                    fData.append('jmtRvImgArr',uplFile);
+
+                                });
+                                fetch(`/review/ajax/img`,{
+                                    'method':'POST',
+                                    'body':fData
+                                }).then(res=>res.json())
+                                    .then(data=>{
+                                        console.log(data);
+                                        location.href=`/jmt/${ijmt}`;
+
+                                    })
+                            }
                         }).catch((e) =>{
                         console.log(e);
                     });
@@ -54,6 +102,7 @@
                     })
                         .then(res => res.json())
                         .then((data) => {
+
                             location.href=`/jmt/${ijmt}`;
                         }).catch((e) =>{
                         console.log(e);
@@ -95,4 +144,7 @@
             })
         });
     })();
+
+
+
 }

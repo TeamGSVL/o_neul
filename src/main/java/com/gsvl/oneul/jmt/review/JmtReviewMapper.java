@@ -13,4 +13,6 @@ public interface JmtReviewMapper {
     JmtReviewVo selReview(JmtReviewEntity entity);
     int delReview(JmtReviewEntity entity);
     int updReview(JmtReviewEntity entity);
+    //사진 등록
+    int insReviewImg(JmtReviewEntity entity);
 }

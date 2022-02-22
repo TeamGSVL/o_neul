@@ -99,6 +99,8 @@
                 subBoxDiv.classList.add('g30');
 
 
+
+
                 const profileDiv = document.createElement('div');
                 const starDiv = document.createElement('div');
                 const ctntDiv = document.createElement('div');
@@ -151,8 +153,20 @@
 
                     subDiv.append(utilDiv);
                 }
-
+                //내용
                 itemDiv.append(ctntDiv);
+                //이미지
+                if(item.j_img.length>0){
+                    const imgDiv = document.createElement('div');
+                    imgDiv.classList.add('review-item-img');
+                    item.j_img.forEach(imgString=>{
+                        let imgElem = document.createElement('img');
+                        imgElem.src = `/pic/jmt/${ijmt}/${item.icmt}/${imgString}`;
+                        imgDiv.append(imgElem);
+                    });
+                    itemDiv.append(imgDiv);
+
+                }
                 reviewList.appendChild(itemDiv);
             });
         }
