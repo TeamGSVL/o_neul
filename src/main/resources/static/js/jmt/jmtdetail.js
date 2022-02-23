@@ -137,7 +137,7 @@
                     });
                     delDiv.addEventListener('click',e=>{
                         if(confirm('정말 삭제하시겠습니까?')){
-                            fetch(`/review/ajax?icmt=${item.icmt}&iuser=${iuser}`,{ method:"DELETE"})
+                            fetch(`/review/ajax?icmt=${item.icmt}&iuser=${iuser}&ijmt=${ijmt}`,{ method:"DELETE"})
                                 .then(res=>res.json())
                                 .then(data=>{
                                     console.log(data);
@@ -157,11 +157,15 @@
                 itemDiv.append(ctntDiv);
                 //이미지
                 if(item.j_img.length>0){
+                    itemDiv.append(document.createElement('hr'));
                     const imgDiv = document.createElement('div');
                     imgDiv.classList.add('review-item-img');
                     item.j_img.forEach(imgString=>{
                         let imgElem = document.createElement('img');
                         imgElem.src = `/pic/jmt/${ijmt}/${item.icmt}/${imgString}`;
+                        imgElem.addEventListener('click',e=>{
+                            window.open(imgElem.src,'popup','width=500,height=500');
+                        })
                         imgDiv.append(imgElem);
                     });
                     itemDiv.append(imgDiv);

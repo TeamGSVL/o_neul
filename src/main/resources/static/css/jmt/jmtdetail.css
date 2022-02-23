@@ -134,7 +134,15 @@
     cursor: pointer;
     background-color: #e5e5e5;
 }
-
+.review-item-img{
+    display: flex;
+    gap: 20px;
+}
+.review-item-img img{
+    cursor: pointer;
+    width: 70px;
+    height: 70px;
+}
 .jmt-review-util i{
     color: #555555;
 }

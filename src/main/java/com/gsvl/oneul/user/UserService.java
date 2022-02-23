@@ -56,15 +56,17 @@ public class UserService {
         return result == null ? 1 : 0;
     }
 
-    // 찜 목록(마이페이지)
-    public List<zzimEntity> zzimList(zzimEntity entity){
-        entity.setIuser(auth.getLoginUserPk());
-        return mapper.zzimList(entity);
+
+
+    //찜목록 food,jmt 나오게하기
+    public List<zzimEntity> zzimFoodList(zzimEntity entity) {
+
+        List<zzimEntity> result = mapper.zzimFoodList(entity);
+        return result;
     }
+    public List<zzimEntity> zzimJmtList(zzimEntity entity) {
 
-    public List<zzimEntity> zzimChk(zzimEntity entity) {
-
-        List<zzimEntity> result = mapper.zzimList(entity);
+        List<zzimEntity> result = mapper.zzimJmtList(entity);
         return result;
     }
 

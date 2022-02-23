@@ -31,7 +31,18 @@ public class JmtReviewService {
     //리뷰하나
     public JmtReviewVo selReview(JmtReviewEntity entity){ return mapper.selReview(entity);}
     //삭제
-    public int delReview(JmtReviewEntity entity){ return mapper.delReview(entity);}
+    public int delReview(JmtReviewEntity entity){
+        List<String> list  = mapper.selReviewImg(entity);
+        if(list!=null){
+            mapper.delReviewImg(entity);
+            String path = Const.UPLOAD_IMG_PATH+"/jmt/"+entity.getIjmt()+"/"+entity.getIcmt();
+            for(String img : list){
+
+                fileUtils.delFile(path+"/"+img);
+
+            }
+        }
+        return mapper.delReview(entity);}
     //수정
     public int updReview(JmtReviewEntity entity){ return mapper.updReview(entity);}
 

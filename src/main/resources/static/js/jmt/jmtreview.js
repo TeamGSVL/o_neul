@@ -11,6 +11,8 @@
     const imgFileName = document.getElementById("imgfile_nm");
 
     imgFilesElem.addEventListener('change',e=>{
+        removeChild(previewImage);
+        imgFileName.innerHTML=null;
         preImgView(Array.from(imgFilesElem.files));
     });
 

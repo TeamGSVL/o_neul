@@ -41,18 +41,20 @@
         <div class="copy-right">
             <div><div class="line"><i class="fa-regular fa-copyright"></i></div></div>
             <div class="copy-content-box">
-                <div class="flex-c-r">
+                <div class="flex-c-c g10">
                     <span class="flex-c-r">오늘 뭐먹을지 고민하는 세상 모든사람을 위해</span>
                 </div>
                 <div class="flex-c-r">
                     <span>presented by Team_GSVL</span>
                 </div>
             </div>
-            <div class="copy-text">Copyright 2018. HandMade all rights reserved.</div>
+            <div class="flex-c-r">
+                <div class="notice_list_main text-emph ">공지사항</div>
+            </div>
+            <div class="copy-text">Copyright 2022. HandMade all rights reserved.</div>
         </div>
 
-        <div class="notice_list_main">공지사항</div>
-        <div class="copy-text">Copyright 2018. HandMade all rights reserved.</div>
+
     </div>
 
     <head>
@@ -60,7 +62,11 @@
         <script defer th:src="@{/js/chatbot/chat.js}"></script>
     </head>
 
+
+
+    </footer>
     <!-- chatbot -->
+
     <div>
         <div>
             <button id="chat_btn" class="chat_btn"><i class="fa-regular fa-comments"></i></button>
@@ -72,7 +78,7 @@
                 <!-- 메인 질문 -->
                 <div id="sentence" class="sentence">
                     <div id="chatbot_icon" class="chatbot_icon"><i class="fa-brands fa-github-alt"></i></div>
-                    <div>안녕하세요. 오늘 뭐먹지? 입니다. 아래중 원하시는 기능을 선택해주세요.</div>
+                    <div>안녕하세요. o_neul 입니다. 아래중 원하시는 기능을 선택해주세요.</div>
                     <div>
                         <div id="food_jmt">맛집</div>
                         <div id="chat_menu">메뉴</div>
@@ -107,8 +113,5 @@
             </div>
         </div>
     </div>
-
-    </footer>
-
 </th:block>
 </html>

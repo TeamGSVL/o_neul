@@ -94,11 +94,13 @@ public class UserController {
 
     @ResponseBody
     @GetMapping("/zzim/{iuser}")
-    public List<zzimEntity> zzimProc(@PathVariable int iuser, zzimEntity entity, Model model) {
+    public Map<String ,List<zzimEntity>> zzimProc(@PathVariable int iuser, zzimEntity entity, Model model) {
         entity.setIuser(iuser);
-        List<zzimEntity> list = service.zzimChk(entity);
-//        model.addAttribute("list", list);
-        return list;
+        Map<String ,List<zzimEntity>> map = new HashMap<>();
+        map.put("food",service.zzimFoodList(entity));
+        map.put("jmt",service.zzimJmtList(entity));
+
+        return map;
     }
 
     //닉네임 변경(마이페이지)
