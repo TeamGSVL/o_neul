@@ -4,7 +4,8 @@
 <th:block th:fragment="header">
     <span id="globalConst" sec:authorize="isAuthenticated()" th:with="auth=${#authentication.getPrincipal().getUser()}"
           th:attr="data-iuser=${auth.iuser}, data-u_nm=${auth.u_nm}, data-u_profileimg=${auth.u_profileimg},
-    data-u_pfnum=${auth.u_pfnum}, data-u_id=${auth.u_id}, data-u_email=${auth.u_email}, data-u_nickname=${auth.u_nickname}"></span>
+    data-u_pfnum=${auth.u_pfnum}, data-u_id=${auth.u_id}, data-u_email=${auth.u_email}, data-u_nickname=${auth.u_nickname}
+    , data-u_rdt=${auth.u_rdt}, data-u_mdt=${auth.u_mdt}"></span>
 
     <!--                    <div sec:authentication="principal.username"></div>-->
     <header class="bg-pink hg-100">

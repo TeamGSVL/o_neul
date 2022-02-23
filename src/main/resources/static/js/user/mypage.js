@@ -5,7 +5,11 @@
     const nickname = dataElem.dataset.u_nickname;
     const email = dataElem.dataset.u_email;
     const nm = dataElem.dataset.u_nm;
-    const profileImg = dataElem.dataset.u_profileimg
+    const profileImg = dataElem.dataset.u_profileimg;
+    const pfnum = dataElem.dataset.u_pfnum;
+    const rdt = dataElem.dataset.u_rdt;
+    const u_rdt = rdt.split(' ', 1);
+    const mdt = dataElem.dataset.u_mdt;
 
 
     const profileFileElem = document.querySelector('#profile-file');
@@ -20,9 +24,11 @@
 
     const profileViewElem = document.querySelector('#profile-view');
     if (profileViewElem) {
+
         const divElem = document.createElement('div');
         profileViewElem.appendChild(divElem);
         divElem.innerHTML = `<img src="C:/upload/images/user/${iuser}/${profileImg}" >`;
+
         profileViewElem.addEventListener('click', function () {
             if (profileFileElem) {
                 profileFileElem.click();
@@ -68,6 +74,7 @@
     if(myProfileElem) {
         const divElem = document.createElement('div')
         myProfileElem.appendChild(divElem);
+
         divElem.classList.add('mypage-info');
         divElem.innerHTML = `
                         <div class="f-s-15 flex-c-r"><i class="fa-regular fa-id-badge"></i>&nbsp;ID</div><div style="font-family: 나눔고딕; color: #4d4d4d;">${uid}</div>
@@ -83,8 +90,10 @@
                 divElem.innerHTML += `<div class="f-s-15 flex-c-r"><i class="fa-regular fa-face-smile"></i>&nbsp;닉네임</div><div>${nickname}</div>`;
             }
 
+
         }
     }
+
 
 
 
@@ -150,6 +159,7 @@
 
             swiperWrapperElem.prepend(divElem);
 
+
         })
         foodSwiper.slideTo(0);
     }
@@ -205,22 +215,54 @@
             })
 
     }
-    const zzimList = (data) => {
-        fetch(`/user/zzim/${iuser}`)
+    const zzimFoodList = (data) => {
+        fetch(`/user/zzimFood/${iuser}`)
             .then(res => res.json())
             .then((data) => {
+
                 zzimfood(data.food);
                 zzimJmt(data.jmt);
+
             }).catch((e) => {
             console.log(e);
         });
     }
-    zzimList();
+    zzimFoodList();
+
+    const zzimJmt = (data) => {
+        const zzimJmtElem = document.querySelector('#zzimJmt');
+
+        data.forEach((item) => {
+            const divElem = document.createElement('div')
+            zzimJmtElem.appendChild(divElem);
+            divElem.innerHTML = `${item.j_placenm}`;
+        })
 
 
     if (dataElem.dataset.u_pfnum == 1) {
         const mypageBtn = document.querySelector('#mypage_btn');
         mypageBtn.innerHTML += `<a class="flex-c-c" href=/user/password>비밀번호 변경</a>`;
+
+    }
+    if(pfnumElem) {
+        if(pfnum == 1){
+            const divElem = document.createElement('div')
+            pfnumElem.appendChild(divElem);
+            divElem.innerHTML = `<img src="/img/logo.png" class="login-another img"><span style="font-size: 30px;">${nm}님</span>`;
+        }
+        else if (pfnum == 2) {
+            const divElem = document.createElement('div')
+            pfnumElem.appendChild(divElem);
+            divElem.innerHTML = `<img src="/img/naverlogo.png" class="login-another img"><span style="font-size: 30px;">${nm}님</span>`;
+        } else if(pfnum == 3){
+            const divElem = document.createElement('div')
+            pfnumElem.appendChild(divElem);
+            divElem.innerHTML = `<img src="/img/kakaologo.png" class="login-another img"><span style="font-size: 30px;">${nm}님</span>`;
+        } else if(pfnum == 4){
+            const divElem = document.createElement('div')
+            pfnumElem.appendChild(divElem);
+            divElem.innerHTML = `<img src="/img/googlelogo.png" class="login-another img"><span style="font-size: 30px;">${nm}님</span>`;
+        }
     }
 
 

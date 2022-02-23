@@ -31,6 +31,7 @@
 
     <!--  찜목록  -->
     <select id="zzimFoodList" resultType="zzimEntity">
+
         SELECT B.f_nm, B.f_img, B.ifood
         FROM o_zzim_food A INNER JOIN o_food B ON A.ifood = B.ifood WHERE A.iuser = ${iuser};
     </select>
@@ -47,6 +48,7 @@
     <select id="jmtImg" resultType="String">
         select j_src from o_jmt_img where ijmt = #{ijmt}
     </select>
+
 
     <select id="nicknameChk" resultType="UserEntity">
         SELECT *

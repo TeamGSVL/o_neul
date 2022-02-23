@@ -57,6 +57,16 @@ public class UserService {
         return result == null ? 1 : 0;
     }
 
+    // 찜 목록(마이페이지)
+    public List<zzimEntity> zzimFoodChk(zzimEntity entity) {
+
+        List<zzimEntity> result = mapper.zzimFoodList(entity);
+        return result;
+    }
+
+    public List<zzimEntity> zzimJmtChk(zzimEntity entity) {
+
+
 
 
     //찜목록 food,jmt 나오게하기
@@ -66,6 +76,7 @@ public class UserService {
         return result;
     }
     public List<zzimEntity> zzimJmtList(zzimEntity entity) {
+
 
         List<zzimEntity> result = mapper.zzimJmtList(entity);
         return result;

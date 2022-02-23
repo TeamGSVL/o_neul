@@ -77,10 +77,7 @@ public class UserController {
 
     // 마이페이지
     @GetMapping("/mypage")
-    public void myPage(zzimEntity entity, Model model) {
-        //찜 목록 뿌리기
-//        List<zzimEntity> list = service.zzimList(entity);
-//        model.addAttribute("list", list);
+    public void myPage() {
     }
 
     @ResponseBody
@@ -93,6 +90,21 @@ public class UserController {
     }
 
     @ResponseBody
+
+    @GetMapping("/zzimFood/{iuser}")
+    public List<zzimEntity> zzimFoodProc(@PathVariable int iuser, zzimEntity entity) {
+        entity.setIuser(iuser);
+        List<zzimEntity> list = service.zzimFoodChk(entity);
+        return list;
+    }
+
+    @ResponseBody
+    @GetMapping("/zzimJmt/{iuser}")
+    public List<zzimEntity> zzimJmtProc(@PathVariable int iuser, zzimEntity entity) {
+        entity.setIuser(iuser);
+        List<zzimEntity> list = service.zzimJmtChk(entity);
+        return list;
+
     @GetMapping("/zzim/{iuser}")
     public Map<String ,List<zzimEntity>> zzimProc(@PathVariable int iuser, zzimEntity entity, Model model) {
         entity.setIuser(iuser);
