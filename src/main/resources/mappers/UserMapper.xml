@@ -30,9 +30,14 @@
     </select>
 
     <!--  찜목록  -->
-    <select id="zzimList" resultType="zzimEntity">
+    <select id="zzimFoodList" resultType="zzimEntity">
         SELECT B.f_nm
         FROM o_zzim_food A INNER JOIN o_food B ON A.ifood = B.ifood WHERE A.iuser = ${iuser};
+    </select>
+
+    <select id="zzimJmtList" resultType="zzimEntity">
+        SELECT B.j_placenm
+        FROM o_zzim_jmt A INNER JOIN o_jmt B ON A.ijmt = B.ijmt WHERE A.iuser = ${iuser};
     </select>
 
     <select id="nicknameChk" resultType="UserEntity">

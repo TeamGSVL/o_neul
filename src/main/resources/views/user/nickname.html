@@ -1,24 +1,22 @@
-<!DOCTYPE html>
-<html lang="en"
+<html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout">
 <head>
     <link rel="stylesheet" th:href="@{/css/common.css}">
     <script defer th:src="@{/js/user/nickname.js}"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-<section class="login-container flex-c-c">
-    <div class="video-login-container ">
-        <h1>닉네임 변경</h1>
-        <form th:action="@{/user/nickname}" method="post" id="join-frm">
-            <div><label>변경 닉네임 : <input type="text" name="u_nickname" required></label></div>
-            <div><span id="nickname-chk-msg"></span></div>
-            <div><input type="submit" value="변경" id="submitBtn"></div>
-        </form>
-    </div>
-</section>
-
-</body>
-</html>
+<th:block layout:fragment="content">
+    <section class="login-container flex-c-c">
+        <div class="video-login-container ">
+            <h1>닉네임 변경</h1>
+            <form th:action="@{/user/nickname}" method="post" id="join-frm">
+                <div><label>변경 닉네임 : <input type="text" name="u_nickname" required></label></div>
+                <div><span id="nickname-chk-msg"></span></div>
+                <div><input type="submit" value="변경" id="submitBtn"></div>
+            </form>
+        </div>
+    </section>
+</th:block>

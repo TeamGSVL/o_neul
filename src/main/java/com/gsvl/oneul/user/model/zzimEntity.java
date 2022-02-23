@@ -9,5 +9,7 @@ import lombok.ToString;
 @ToString
 public class zzimEntity extends UserEntity{
     private int ifood;
+    private int ijmt;
     private String f_nm;
+    private String j_placenm;
 }
