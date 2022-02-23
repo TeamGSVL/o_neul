@@ -4,16 +4,28 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="temp/thymeleaf_layout">
 <head>
+
+    <link rel="stylesheet" th:href="@{/css/mypage.css}">
+
     <link rel="stylesheet" th:href="@{/css/user/mypage.css}">
+
     <script defer th:src="@{/js/user/mypage.js}"></script>
     <meta charset="UTF-8">
     <title>Broad</title>
 </head>
 <th:block layout:fragment="content">
+
+
+<section class="login-container flex-c-c">
+    <div class="video-login-container ">
+
+        <div id="profile-view">
+
     <section class="mypage-container mt60">
         <div>
             <div class="flex-c-r f-s-40"><i class="clr-main fa-regular fa-id-card"></i></div>
             <div class="line">마이페이지</div>
+
         </div>
         <div class="flex-c-r">
             <div class="mypage-info-container">

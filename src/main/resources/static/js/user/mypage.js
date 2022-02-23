@@ -20,6 +20,9 @@
 
     const profileViewElem = document.querySelector('#profile-view');
     if (profileViewElem) {
+        const divElem = document.createElement('div');
+        profileViewElem.appendChild(divElem);
+        divElem.innerHTML = `<img src="C:/upload/images/user/${iuser}/${profileImg}" >`;
         profileViewElem.addEventListener('click', function () {
             if (profileFileElem) {
                 profileFileElem.click();
@@ -27,57 +30,24 @@
         })
     }
     //이미지 업로드
-    if(profileViewElem) {
-        fetch(`/user/mypage`, {
+    const uploadProfileImg = (img) => {
+        const fData = new FormData();
+        fData.append('u_profileimg', img);
+
+        fetch('/user/mypage', {
             'method': 'post',
-            'headers': {'Content-Type': 'application/json'},
-            'body': JSON.stringify({u_profileimg: profileImg})
-        })
-            .then(res => res.json())
-            .then((data) => {
-                console.log(1);
-                const divElem = document.createElement('div')
-                profileViewElem.appendChild(divElem);
-                divElem.innerHTML = `<img src="C:\\upload\\images\\${iuser}\\${profileImg}">`;
+            'body': fData
+        }).then(res => res.json())
+            .then(data => {
+                console.log(data);
                 setProfileImg(data);
             }).catch((e) => {
             console.log(e);
         });
     }
-
-
-        // fetch('/user/mypage', {
-        //     'method': 'post',
-        //     'body': fData
-        // }).then(res => res.json())
-        //     .then(data => {
-        //         console.log("11");
-        //             const divElem = document.createElement('div')
-        //             profileViewElem.appendChild(divElem);
-        //             divElem.innerHTML = `<img src="/images/user/${iuser}/${profileImg}">`;
-        //
-        //         setProfileImg(data);
-        //     }).catch((e) => {
-        //     console.log(e);
-        // });
-
-
-
-    // if(profileViewElem){
-    //     const divElem = document.createElement('div')
-    //     profileViewElem.appendChild(divElem);
-    //     divElem.innerHTML = `<img src="/images/user/${iuser}/${profileImg}">`;
-    // }
-
     const setProfileImg = (data) => {
-        if (!data.result) {
-            return;
-        }
+        if(!data.result) { return; }
         const src = `/images/user/${iuser}/${data.result}`;
-        console.log(22);
-        // const divElem = document.createElement('div')
-        // profileViewElem.appendChild(divElem);
-        // divElem.innerHTML = `<img src="/images/user/${iuser}/${profileImg}">`;
 
         const profileImgElem = profileViewElem.querySelector('img');
         profileImgElem.src = src;
