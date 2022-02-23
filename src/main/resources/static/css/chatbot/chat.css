@@ -5,6 +5,8 @@
     background-color: transparent;
     border: #fff;
     font-size: 70px;
+    width: 100px;
+    height: 100px;
 }
 
 .chat_main {
@@ -20,7 +22,7 @@
     background-color: #ecf0f1;
 }
 
-::-webkit-scrollbar {
+.chat_main::-webkit-scrollbar {
     display: none;
 }
 

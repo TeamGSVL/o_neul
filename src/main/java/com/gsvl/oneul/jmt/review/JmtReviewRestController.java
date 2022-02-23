@@ -4,6 +4,7 @@ import com.gsvl.oneul.jmt.review.model.JmtReviewEntity;
 import com.gsvl.oneul.jmt.review.model.JmtReviewVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -41,5 +42,12 @@ public class JmtReviewRestController {
     @PutMapping()
     public int updReview(@RequestBody JmtReviewEntity entity){
         return service.updReview(entity);
+    }
+
+    //리뷰 이미지
+    @PostMapping("/img")
+    public int insImg(MultipartFile[] jmtRvImgArr,JmtReviewEntity entity){
+        service.uploadReviewImg(jmtRvImgArr,entity);
+        return 1;
     }
 }

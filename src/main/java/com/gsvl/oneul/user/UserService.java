@@ -12,6 +12,7 @@ import com.gsvl.oneul.user.model.UserEntity;
 import com.gsvl.oneul.user.model.UserVo;
 import com.gsvl.oneul.user.model.zzimEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -64,6 +65,18 @@ public class UserService {
     }
 
     public List<zzimEntity> zzimJmtChk(zzimEntity entity) {
+
+
+
+
+    //찜목록 food,jmt 나오게하기
+    public List<zzimEntity> zzimFoodList(zzimEntity entity) {
+
+        List<zzimEntity> result = mapper.zzimFoodList(entity);
+        return result;
+    }
+    public List<zzimEntity> zzimJmtList(zzimEntity entity) {
+
 
         List<zzimEntity> result = mapper.zzimJmtList(entity);
         return result;

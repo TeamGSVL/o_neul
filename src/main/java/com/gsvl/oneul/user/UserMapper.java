@@ -18,8 +18,10 @@ public interface UserMapper {
     UserEntity idChk(UserEntity entity);        //아이디 중복 체크(회원가입)
     UserEntity emailChk(UserEntity entity);     //이메일 중복 체크(회원가입)
 
-    List<zzimEntity> zzimFoodList(zzimEntity entity); //찜 목록
-    List<zzimEntity> zzimJmtList(zzimEntity entity); //찜 목록
+
+    List<zzimEntity> zzimFoodList(zzimEntity entity); //찜 음식 목록
+    List<zzimEntity> zzimJmtList(zzimEntity entity);
+
 
     int updNickname(UserEntity vo);     //닉네임 변경(마이페이지)
     UserEntity nicknameChk(UserEntity vo);  //닉네임 중복 체크(닉네임 변경)
