@@ -8,6 +8,7 @@
 
 html{
     scroll-behavior: smooth;
+
 }
 body{
     font-weight: bolder;
@@ -69,7 +70,9 @@ input[type=radio]{
 .bg-lightpink{
     background-color: rgba(187, 161, 163, 0.23);
 }
-
+.hidden{
+    display: none;
+}
 header{
     display: grid;
     grid-template-columns: repeat(2,1fr);
@@ -186,6 +189,14 @@ footer{
     display: flex;
     align-items: center;
     justify-content: end;
+}
+
+.wd100{
+    width: 100px;
+}
+
+.wd200{
+    width: 200px;
 }
 
 .w100{

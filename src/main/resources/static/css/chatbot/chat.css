@@ -5,6 +5,8 @@
     background-color: transparent;
     border: #fff;
     font-size: 70px;
+    width: 100px;
+    height: 100px;
 }
 
 .chat_main {
@@ -18,6 +20,10 @@
     overflow: auto;
     scroll-behavior: smooth;
     background-color: #ecf0f1;
+}
+
+.chat_main::-webkit-scrollbar {
+    display: none;
 }
 
 .chat_main_close {

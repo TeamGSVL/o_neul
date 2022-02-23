@@ -30,9 +30,22 @@
     </select>
 
     <!--  찜목록  -->
-    <select id="zzimList" resultType="zzimEntity">
-        SELECT B.f_nm
+    <select id="zzimFoodList" resultType="zzimEntity">
+        SELECT B.f_nm, B.f_img, B.ifood
         FROM o_zzim_food A INNER JOIN o_food B ON A.ifood = B.ifood WHERE A.iuser = ${iuser};
+    </select>
+
+    <resultMap id="zzimJmt" type="zzimEntity">
+        <result property="ijmt" column="ijmt"></result>
+        <collection property="j_src" column="ijmt" select="jmtImg"></collection>
+    </resultMap>
+
+    <select id="zzimJmtList" resultMap="zzimJmt">
+        SELECT B.j_placenm,  B.ijmt
+        FROM o_zzim_jmt A INNER JOIN o_jmt B ON A.ijmt = B.ijmt WHERE A.iuser = ${iuser};
+    </select>
+    <select id="jmtImg" resultType="String">
+        select j_src from o_jmt_img where ijmt = #{ijmt}
     </select>
 
     <select id="nicknameChk" resultType="UserEntity">

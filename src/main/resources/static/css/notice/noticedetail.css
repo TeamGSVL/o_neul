@@ -2,6 +2,11 @@
     margin: auto;
     text-align: center;
 }
+.notice-detail-content-container{
+    width: 100%;
+    height: 100%;
+    padding: 50px 100px;
+}
 
 .list_btn {
     color: #fff;
