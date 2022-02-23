@@ -12,6 +12,7 @@ import com.gsvl.oneul.user.model.UserEntity;
 import com.gsvl.oneul.user.model.UserVo;
 import com.gsvl.oneul.user.model.zzimEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -20,10 +20,6 @@
     background-color: #ecf0f1;
 }
 
-::-webkit-scrollbar {
-    display: none;
-}
-
 .chat_main_close {
     cursor: pointer;
 }
